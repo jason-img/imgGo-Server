@@ -1,0 +1,66 @@
+{% extends './base.html' %}
+{% block title %}{{conf.Title}}{% endblock %}
+{% block keywords %}{{conf.Keywords}}{% endblock %}
+{% block desc %}{{conf.Desc}}{% endblock %}
+
+{%- block body %}
+<h1>Index</h1>
+<p>{% if query %}{{query}}{% endif %}</p>
+<ul>
+{%- for item in items%}
+<li>
+    <a target="_blank" href='{{conf.UploadPath}}/{{item.FilePath}}/{{item.FileName}}' class='item'>{{item.OriginName}} - {{item.CreatedAt|FormatDate}} - {{item.ViewCount}}</a>
+</li>
+{% endfor %}
+</ul>
+{% if Pagination.PageCount>1 %}
+<div class="m-pagination">
+    <span class="ml20 last">共{{Pagination.PageCount}}页</span>
+    {% if Pagination.Index>1 %}<a href='?page={{Pagination.Index-1}}' class='next page'>上一页</a>{% endif %}
+    {% if Pagination.PageCount<=5 %}
+    {% for i in Pagination.PageCount|IntToSlice %}
+    {% if i==Pagination.Index %}
+    <a class='page curr'>{{i}}</a>
+    {% else %}
+    <a href='?page={{i}}' class='page'>{{i}}</a>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    {% if Pagination.Index<5 %}
+    {% for i in 5|IntToSlice %}
+    {% if i==Pagination.Index %}
+    <a class='page curr'>{{i}}</a>
+    {% else %}
+    <a href='?page={{i}}' class='page'>{{i}}</a>
+    {% endif %}
+    {% endfor %}
+    <a href='javascript:;' class='dot'>...</a>
+    <a class='page' href='?page={{Pagination.PageCount}}'>{{Pagination.PageCount}}</a>
+    {% else %}
+    <a href='?page=1' class='page'>1</a>
+    <a href='javascript:;' class='dot'>...</a>
+    {% if Pagination.PageCount>=Pagination.Index+4 %}
+    {%- for i in Pagination.Index|IntToSliceC5 %}
+    {% if i==Pagination.Index %}
+    <a class='page curr'>{{i}}</a>
+    {% else %}
+    <a href='?page={{i}}' class='page'>{{i}}</a>
+    {% endif %}
+    {% endfor %}
+    <a href='javascript:;' class='dot'>...</a>
+    <a class='page' href='?page={{Pagination.PageCount}}'>{{Pagination.PageCount}}</a>
+    {% else %}
+    {%- for i in Pagination.PageCount|IntToSlice %}
+    {% if i==Pagination.Index %}
+    <a class='page curr'>{{i}}</a>
+    {% else %}
+    <a href='?page={{i}}' class='page'>{{i}}</a>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% if Pagination.PageCount>Pagination.Index %}<a href='?page={{Pagination.Index+1}}' class='next page'>下一页</a>{% endif %}
+</div>
+{% endif %}
+{% endblock %}

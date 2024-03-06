@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="keywords" content="{% block keywords %}{% endblock %}"/>
+    <meta name="description"
+          content="{% block desc %}{% endblock %}"/>
+    <link href="{{conf.UploadPath}}/css/page.css" rel="stylesheet"/>
+    <script type="text/javascript" src="{{conf.UploadPath}}/js/page.js"></script>
+    <link href="{{conf.UploadPath}}/img/favicon.ico" rel="shortcut icon"/>
+    {%- block head %} {% endblock %}
+</head>
+<body>
+{%- block body %} {% endblock %}
+</body>
+<footer>
+{%- block footer %} {% endblock %}
+</footer>

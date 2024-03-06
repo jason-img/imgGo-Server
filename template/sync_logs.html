@@ -1,0 +1,9 @@
+{% extends './base.html' %}
+{% block title %}{{conf.Title}}{% endblock %}
+{% block keywords %}{{conf.Keywords}}{% endblock %}
+{% block desc %}{{conf.Desc}}{% endblock %}
+
+{%- block body %}
+<h1>sync_logs</h1>
+<p>{{query}}</p>
+{% endblock %}

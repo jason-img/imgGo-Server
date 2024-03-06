@@ -1,0 +1,52 @@
+AppName: "imgGo-Server"
+Host: "127.0.0.1"
+Port: 8800
+MD5Salt: "9cC3LxJH@Hz4WR6#"
+JWTSign: "t&63gFkdC3$62bfR"
+AppMode: "dev"
+IsDebug: True
+Url: "http://localhost:8800/"
+Path: "./upload"
+BackupPath: "./backup"
+BackupKeepDays: 30
+MaxMemory: 10240
+MaxFileSize: 10240
+NginxAccessLogPath: "./logs/imgGo-Server_access.log"
+NginxErrorLogPath: "./logs/imgGo-Server_error.log"
+LastMd5File: "./lastFileMd5.txt"
+Page:
+  Title: "imgGo-Server"
+  Keywords: "imgGo Server"
+  Desc: "imgGo-Server is Best!"
+  UploadPath: "/upload"
+  PageSize: 20
+Database:
+  Driver: "mysql"
+  Host: "127.0.0.1"
+  Port: "3306"
+  DbName: "imgGo"
+  Username: "root"
+  Password: "mysql_password"
+  CharSet: "utf8mb4"
+  ShowSql: True
+FilerunEnable: False
+FilerunUrl: "https://127.0.0.1:6677/"
+FilerunDB:
+  Driver: "mysql"
+  Host: "127.0.0.1"
+  Port: "3306"
+  DbName: "filerun"
+  Username: "root"
+  Password: "mysql_password"
+  CharSet: "utf8mb4"
+  ShowSql: True
+UserConfig:
+  AllowRegister: True
+  AllowLogin: True
+  UsernameRegex: "^[a-zA-Z0-9]{3,16}$"
+  PwdRegex: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,32}$"
+AcceptFileTypes: [ "jpg", "jpeg", "png", "webp", "gif", "bmp", "svg", "tif", "tiff", "txt", "text", "log", "ini", "conf",
+                   "yml", "yaml", "md", "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "vsd", "vsdx", "zip", "7z" ]
+ConvertToWebpTypes: [ "jpg", "jpeg", "png", "bmp" ]
+WebpQuality: 80
+DelOriginFile: True
